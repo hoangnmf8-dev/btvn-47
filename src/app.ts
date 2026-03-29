@@ -13,8 +13,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
   if(error.status !== 500) {
     errorResponse(res, error.message, error.status);
-  };
-  errorResponse(res);
+  } else {
+    errorResponse(res);
+  }
 });
 
 app.listen(3000, () => {
